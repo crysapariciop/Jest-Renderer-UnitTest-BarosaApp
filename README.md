@@ -17,7 +17,7 @@ Jest is a testing framework developed specifically for JavaScript and React appl
    ├───__tests__/
    ├   ├───App-tests.tsx/
 
-```
+
 - **App-tests.tsx/** contains all the unit and integration tests to be performed.
 
 ## Installation
