@@ -1,0 +1,112 @@
+import Colors, { COLOR } from '@src/theme/colors';
+import { MetricsSizes } from '@src/theme/metrics';
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  pageHeader: { color: Colors.whiteBg, fontSize: MetricsSizes.ms16, lineHeight: MetricsSizes.ms20 },
+  backgroundImage: { height: MetricsSizes.ms144, width: '100%', position: 'absolute', zIndex: -1 },
+  coverContainer: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: Colors.whiteBg,
+    overflow: 'hidden',
+  },
+  profileName: {
+    color: Colors.profileBlackText,
+    textAlign: 'center',
+  },
+  profileBio: {
+    fontSize: MetricsSizes.ms12,
+    textAlign: 'center',
+    lineHeight: MetricsSizes.ms16,
+    marginTop: MetricsSizes.vs4,
+    color: Colors.profileBioGrey,
+    marginBottom: MetricsSizes.vs12,
+    marginHorizontal: MetricsSizes.hs8,
+  },
+  editIconContainer: {
+    height: MetricsSizes.ms40,
+    width: MetricsSizes.ms40,
+    borderRadius: MetricsSizes.ms20,
+    backgroundColor: Colors.green,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: MetricsSizes.ms2,
+    borderColor: Colors.whiteBg,
+  },
+  profileImage: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: Colors.bgGrey,
+  },
+  avatarImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: MetricsSizes.ms12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.bgGrey,
+  },
+  imageContainer: {
+    height: MetricsSizes.ms96,
+    width: MetricsSizes.ms96,
+    borderWidth: MetricsSizes.ms4,
+    borderColor: Colors.whiteBg,
+    borderRadius: MetricsSizes.ms12,
+    backgroundColor: Colors.whiteBg,
+    overflow: 'hidden',
+  },
+  profileAndBioConatiner: {
+    height: MetricsSizes.ms96,
+    width: MetricsSizes.ms96,
+  },
+  profileDataConatiner: {
+    marginTop: MetricsSizes.vs44,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  profilePopUpContent: {
+    flexDirection: 'row',
+    marginTop: MetricsSizes.vs4,
+    marginLeft: MetricsSizes.hs4,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profileActivityIndicator: {
+    width: '100%',
+    height: '100%',
+  },
+  editProfileDetailsIcon: {
+    position: 'absolute',
+    right: MetricsSizes.hs0,
+    left: MetricsSizes.hs200,
+    height: MetricsSizes.ms26,
+    width: MetricsSizes.ms26,
+    backgroundColor: Colors.green,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: MetricsSizes.ms13,
+  },
+  profileHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: MetricsSizes.vs20,
+    marginHorizontal: MetricsSizes.hs16,
+  },
+  menuStyle: { position: 'relative', top: -MetricsSizes.vs18, left: MetricsSizes.hs38 },
+  menuOptionText: { marginLeft: MetricsSizes.hs4 },
+  editButtonLableStyle: { fontSize: MetricsSizes.ms12, lineHeight: MetricsSizes.ms18 },
+  editButtonStyle: {
+    paddingVertical: MetricsSizes.vs6,
+    paddingHorizontal: MetricsSizes.hs6,
+    borderRadius: MetricsSizes.ms4,
+  },
+  editButtonIconStyle: { marginRight: MetricsSizes.hs4 },
+  horizontalLineBottomSheet: { marginTop: MetricsSizes.vs20, marginBottom: MetricsSizes.vs20 },
+  // profileNameContainer: { marginTop: -MetricsSizes.vs18 },
+  profileNameParent: { flexDirection: 'row', justifyContent: 'center' },
+  profileNameRow: { flexDirection: 'row', alignSelf: 'center' },
+});

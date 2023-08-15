@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["ES2021.String"],
+    "allowJs": true,
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "moduleResolution": "Node",
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@core-component/*": ["src/core-component/*"],
+      "@core-constant/*": ["src/core-constant/*"],
+      "@core-navigations/*": ["src/core-navigation/*"],
+      "@services/*": ["src/core-services/*"],
+      "@core-utils/*": ["src/core-utils/*"],
+      "@graphql/*": ["src/graphql/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@modules/*": ["src/modules/*"],
+      "@theme/*": ["src/theme/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
+}

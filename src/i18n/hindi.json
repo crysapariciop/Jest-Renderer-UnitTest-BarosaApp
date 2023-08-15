@@ -1,0 +1,22 @@
+{
+  "translation": {
+    "investingMadeSimple": "Investing made simple",
+    "barosa": "Barosa",
+    "createAnAccount": "Create an Account",
+    "letsGetYouStartedWithBarosa": "Let’s get you started with Barosa",
+    "signIntoYourAccount": "Sign into your account",
+    "continueWithGoogle": "Continue with Google",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "signIn": "Sign In",
+    "dontHaveAnAccountSignUp": "Don’t Have an Account? Sign Up",
+    "alreadyHaveAnAccountSignIn": "Already Have an Account? Sign In",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "byCreatingAnAccountYouAgreeToOur": "By creating an account, you agree to our",
+    "termsConditions": "Terms & Conditions",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy"
+  }
+}
