@@ -1,0 +1,864 @@
+{
+	"info": {
+		"_postman_id": "92ddbff0-64ee-4629-a6a4-c45690b9bb76",
+		"name": "TestNewman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29457966",
+		"_collection_link": "https://orange-water-172695.postman.co/workspace/52013499-8d40-4a84-8ddb-2a1f4696a845/collection/29457966-92ddbff0-64ee-4629-a6a4-c45690b9bb76?action=share&source=collection_link&creator=29457966"
+	},
+	"item": [
+		{
+			"name": "barosa-auth",
+			"item": [
+				{
+					"name": "Signup Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var num=Math.floor((Math.random() * 1000) + 1);\r",
+									"pm.collectionVariables.set(\"mail\",\"barosa\"+num+\"@mailinator.com\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{mail}}\",\n    \"firstName\": \"firstName\",\n    \"lastName\": \"lastName\",\n    \"password\": \"password#123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var token=(jsonData.data.token);\r",
+									"    pm.collectionVariables.set(\"Token\", token);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDEyMWZlNWMxMjRkOTNkYzEwZDNiNjkiLCJpYXQiOjE2ODY1MTE5OTl9.FC1ANR1KITRXWP2oOkByp9GrqtLo0vxXgSLEhGnTZm4"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA; connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{mail}}\",\n    \"password\": \"password#123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-detail Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user type Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA; connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA; connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userType\": \"manufacturer\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/{{userId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA; connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA; connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA; connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/logout",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "items",
+			"item": [
+				{
+					"name": "get watch brands families models Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/watch-brands-families-models",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"watch-brands-families-models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get items Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search brands Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/search-watches?query=rolex&limit=15",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"search-watches"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "rolex"
+								},
+								{
+									"key": "limit",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product detail by Id Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/product-details?id=${productId}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product-details"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "${productId}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all archieve-products Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/archieve-products",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"archieve-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get otp on mobile Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA; connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA; connect.sid=s%3AiEGrjGxsGE4lAAHcBfFZNOeuXSMI6yE1.ONE8j8fr%2FYk6phagVuVI96wWhh26yF2SI2f6L2TEOZA"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"countryCode\": \"504\",\n    \"mobileNumber\": \"99160768\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/otp",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"otp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Other User profile",
+			"item": [
+				{
+					"name": "Other individual user details Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM3NjkyOCwiZXhwIjoxNjk1OTY4OTI4fQ.Ly9zPT5lf_9lgeFiZbaW3Oe2caNDXfhl-YjAATq0jn4"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/user-profiles/{{userId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user-profiles",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Privacy setting",
+			"item": [
+				{
+					"name": "Update privacy setting Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGEyYjdiZDVhOTUxYTc3YTczYmFlZWYiLCJpYXQiOjE2ODgzODU0NzB9.zCTWqjzdm_b51n6FouCrz1U8pa1bxsbpTrgdim9Fmgg"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3ASrRc37BhpNZt-b8D8n_Ydyde4u4f6NFi.OrcWvO4Fdv1OiG8pRyxPXzYlxlwtXPMVIIi7O4HiDI8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"visibility\": \"public\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/profile-privacy/64a2b7bd5a951a77a73baeef",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"profile-privacy",
+								"64a2b7bd5a951a77a73baeef"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shipping Address",
+			"item": [
+				{
+					"name": "Get address by ZIP Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM4MDQyMiwiZXhwIjoxNjk1OTcyNDIyfQ.BfvfhyZezR41VkjjEXZqYQl6yxjEKVS3A-VO530iIgo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/zip-codes?zip_code={{zipCode}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"zip-codes"
+							],
+							"query": [
+								{
+									"key": "zip_code",
+									"value": "{{zipCode}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all saved address Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM4MDQyMiwiZXhwIjoxNjk1OTcyNDIyfQ.BfvfhyZezR41VkjjEXZqYQl6yxjEKVS3A-VO530iIgo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/addresses",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save new address Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM4MDQyMiwiZXhwIjoxNjk1OTcyNDIyfQ.BfvfhyZezR41VkjjEXZqYQl6yxjEKVS3A-VO530iIgo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM4MDQyMiwiZXhwIjoxNjk1OTcyNDIyfQ.BfvfhyZezR41VkjjEXZqYQl6yxjEKVS3A-VO530iIgo"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3Ak4nCHQwri4gI9L1tUtChb2Rp4J8dQMzH.9kDligiEV58tkVFzg0MnXbi4n%2FMvS6FI4BffTrKeKBM"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"countryCode\": \"+1\",\n  \"phone\": \"2105551234\",\n  \"houseNumber\": \"5\",\n  \"street\": \"15\",\n  \"city\": \"Austin\",\n  \"state\": \"Texas\",\n  \"country\": \"United States\",\n  \"zipcode\": \"73301\",\n  \"addressType\": \"HOME\",\n  \"default\": \"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/addresses",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit address Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM4MDQyMiwiZXhwIjoxNjk1OTcyNDIyfQ.BfvfhyZezR41VkjjEXZqYQl6yxjEKVS3A-VO530iIgo"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3Ak4nCHQwri4gI9L1tUtChb2Rp4J8dQMzH.9kDligiEV58tkVFzg0MnXbi4n%2FMvS6FI4BffTrKeKBM; connect.sid=s%3Ak4nCHQwri4gI9L1tUtChb2Rp4J8dQMzH.9kDligiEV58tkVFzg0MnXbi4n%2FMvS6FI4BffTrKeKBM"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"countryCode\": \"+1\",\n  \"phone\": \"2105551234\",\n  \"houseNumber\": \"5\",\n  \"street\": \"15\",\n  \"city\": \"Austin\",\n  \"state\": \"Texas\",\n  \"country\": \"United States\",\n  \"zipcode\": \"73301\",\n  \"addressType\": \"OFFICE\",\n  \"default\": \"true\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/addresses/{{addressId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"addresses",
+								"{{addressId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set default address Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM4MDQyMiwiZXhwIjoxNjk1OTcyNDIyfQ.BfvfhyZezR41VkjjEXZqYQl6yxjEKVS3A-VO530iIgo"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3Ak4nCHQwri4gI9L1tUtChb2Rp4J8dQMzH.9kDligiEV58tkVFzg0MnXbi4n%2FMvS6FI4BffTrKeKBM; connect.sid=s%3Ak4nCHQwri4gI9L1tUtChb2Rp4J8dQMzH.9kDligiEV58tkVFzg0MnXbi4n%2FMvS6FI4BffTrKeKBM; connect.sid=s%3Ak4nCHQwri4gI9L1tUtChb2Rp4J8dQMzH.9kDligiEV58tkVFzg0MnXbi4n%2FMvS6FI4BffTrKeKBM"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n  \"default\": false\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/addresses/{{addressId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"addresses",
+								"{{addressId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

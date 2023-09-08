@@ -1,0 +1,15 @@
+{
+  "name": "Artillery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "artillery": "^2.0.0-23"
+  }
+}
