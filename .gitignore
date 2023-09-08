@@ -64,3 +64,6 @@ previewConfig.json
 
 .vscode/*
 yarn.lock
+endpoint/artillery/node_modules
+endpoint/newman/node_modules
+endpoint/newman/newman

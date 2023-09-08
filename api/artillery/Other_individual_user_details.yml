@@ -1,0 +1,25 @@
+config:
+  target: "https://mobile-sandbox.barosa.co"
+  phases: 
+    - duration: 20
+      arrivalRate: 1
+      name: Warm up
+before: 
+  flow:
+    - log: "previos - users details"
+    - get:
+        url: "/users"
+        headers: 
+          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6IiIsImZpcnN0TmFtZSI6IiIsImxhc3ROYW1lIjoiIiwidXNlclR5cGUiOiIiLCJiaW8iOiIiLCJpbWFnZXMiOnt9LCJhdXRoIjp7fSwiaXNFbWFpbFZlcmlmaWVkIjpmYWxzZSwic2NvcGUiOnt9LCJpYXQiOjE2OTMzNDkxNzAsImV4cCI6MTY5NTk0MTE3MH0.uDeckh-MJtxEO3RdJOWnIsPPKLBQzsPnVR7fw2HE1i4"
+        capture:
+          - json: "$.data[0]._id"
+            as: "id_user"  
+scenarios:
+  - name: "Other individual user details"
+    flow: 
+      - get: 
+          url: "/user-profiles/{{id_user}}"
+          headers: 
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6Inh5ejIxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ImZpcnN0TmFtZSIsImxhc3ROYW1lIjoibGFzdE5hbWUiLCJ1c2VyVHlwZSI6IiIsImJpbyI6IiIsImltYWdlcyI6eyJwcm9maWxlIjpudWxsLCJjb3ZlciI6bnVsbCwiX2lkIjoiNjRlZTc1MzI2Y2MyYmNhZDUwYmE2NGMzIn0sImF1dGgiOnsiZ29vZ2xlIjpmYWxzZSwicGFzc3dvcmQiOnRydWUsIl9pZCI6IjY0ZWU3NTMyNmNjMmJjYWQ1MGJhNjRjNCJ9LCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6ImZpcnN0TmFtZSIsImlhdCI6MTY5MzM4MDQyMiwiZXhwIjoxNjk1OTcyNDIyfQ.BfvfhyZezR41VkjjEXZqYQl6yxjEKVS3A-VO530iIgo"
+       
+      - log: "codigo {{id_user}}"

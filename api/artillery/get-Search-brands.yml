@@ -1,0 +1,15 @@
+config:
+  target: "https://mobile-sandbox.barosa.co"
+  phases:
+    - duration: 20
+      arrivalRate: 1
+      name: Warm up
+  defaults:
+      headers:
+       Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGVlNzUzMjZjYzJiY2FkNTBiYTY0YzYiLCJlbWFpbCI6IiIsImZpcnN0TmFtZSI6IiIsImxhc3ROYW1lIjoiIiwidXNlclR5cGUiOiIiLCJiaW8iOiIiLCJpbWFnZXMiOnt9LCJhdXRoIjp7fSwiaXNFbWFpbFZlcmlmaWVkIjpmYWxzZSwic2NvcGUiOnt9LCJpYXQiOjE2OTMzNDkxNzAsImV4cCI6MTY5NTk0MTE3MH0.uDeckh-MJtxEO3RdJOWnIsPPKLBQzsPnVR7fw2HE1i4"
+
+scenarios:
+  - name: "Search brands"
+    flow:
+      - get:
+          url: "/search-watches?query=rolex&limit=15"
